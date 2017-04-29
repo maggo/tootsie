@@ -37,6 +37,7 @@ class Auth extends Component {
           console.log('Error!', json.error_description);
         } else {
           localStorage.setItem('access_token', json.access_token);
+          this.props.history.push('/timeline');
         }
       });
   }
