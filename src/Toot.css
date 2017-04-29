@@ -1,0 +1,27 @@
+.toot {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.toot__avatar {
+  flex: 0 0 50px;
+  margin-right: 1rem;
+}
+
+.toot__content {
+  flex: 1;
+}
+
+.toot__message {
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+.toot__message .invisible {
+  display: none;
+}
+
+.toot__message .ellipsis:after {
+  content: "…";
+}
