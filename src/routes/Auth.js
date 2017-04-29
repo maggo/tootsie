@@ -11,7 +11,7 @@ class Auth extends Component {
 
     this.state = {
       instance,
-      authLink: `http://${instance}/oauth/authorize?response_type=code&client_id=${clientId}&redirect_uri=${APP_URL}&scope=read%20write%20follow`
+      authLink: `https://${instance}/oauth/authorize?response_type=code&client_id=${clientId}&redirect_uri=${APP_URL}&scope=read%20write%20follow`
     }
   }
 
@@ -26,7 +26,7 @@ class Auth extends Component {
     formData.append('client_secret', clientSecret);
     formData.append('redirect_uri', APP_URL);
     formData.append('code', token);
-    fetch(`http://${this.state.instance}/oauth/token`, {
+    fetch(`https://${this.state.instance}/oauth/token`, {
       method: 'POST',
       body: formData
     })

@@ -15,7 +15,7 @@ class Setup extends Component {
     formData.append('redirect_uris', 'urn:ietf:wg:oauth:2.0:oob');
     formData.append('scopes', 'read write follow');
 
-    fetch(`http://${instance}/api/v1/apps`, {
+    fetch(`https://${instance}/api/v1/apps`, {
       method: 'POST',
       body: formData
     }).then((res) => res.json())
