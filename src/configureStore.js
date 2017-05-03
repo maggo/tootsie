@@ -15,7 +15,7 @@ export default function configureStore() {
     )
   );
 
-  store.subscribe(() => throttle(saveState({
+  store.subscribe(throttle(() => saveState({
     timeline: store.getState().timeline
   }), 1000));
 
