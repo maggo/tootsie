@@ -1,0 +1,8 @@
+{
+  "name": "Tootsie",
+  "short_name": "Tootsie",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#fff",
+  "description": "A simple and fun mastodon client!"
+}
