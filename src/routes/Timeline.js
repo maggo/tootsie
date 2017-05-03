@@ -6,24 +6,27 @@ import { connect } from 'react-redux';
 import './Timeline.css';
 
 class Timeline extends Component {
-  componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch(fetchToots());
+  handleRefreshClick = (e) => {
+    e.preventDefault();
+    this.props.onRefresh();
   }
 
   render() {
     const { toots } = this.props;
     return (
-      <ul className="timeline">
-        {toots.map(toot => <li key={toot.id}>
-          <Toot
-            account={toot.account}
-            content={toot.content}
-            favoritesCount={toot.favourites_count}
-            reblogCount={toot.reblogs_count}
-          />
-        </li>)}
-      </ul>
+      <div>
+        <a href="#" onClick={this.handleRefreshClick}>Refresh</a>
+        <ul className="timeline">
+          {toots.map(toot => <li key={toot.id}>
+            <Toot
+              account={toot.account}
+              content={toot.content}
+              favoritesCount={toot.favourites_count}
+              reblogCount={toot.reblogs_count}
+            />
+          </li>)}
+        </ul>
+      </div>
     );
   }
 }
@@ -37,8 +40,13 @@ const mapStateToProps = state => {
   };
 }
 
+const mapDispatchToProps = dispatch => ({
+  onRefresh: () => dispatch(fetchToots())
+});
+
 Timeline.propTypes = {
   toots: PropTypes.array.isRequired,
-}
+  onRefresh: PropTypes.func.isRequired,
+};
 
-export default connect(mapStateToProps)(Timeline);
+export default connect(mapStateToProps, mapDispatchToProps)(Timeline);
