@@ -2,11 +2,10 @@ import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk'
 import rootReducer from './reducers.js';
 import { loadState, saveState } from './localStorage.js';
+import throttle from 'lodash.throttle';
 
 export default function configureStore() {
   const persistedState = loadState();
-
-  console.log(persistedState);
 
   const store = createStore(
     rootReducer,
@@ -16,9 +15,9 @@ export default function configureStore() {
     )
   );
 
-  store.subscribe(() => saveState({
+  store.subscribe(() => throttle(saveState({
     timeline: store.getState().timeline
-  }));
+  }), 1000));
 
   return store;
 } ;
