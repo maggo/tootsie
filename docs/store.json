@@ -1,0 +1,20 @@
+{
+  "timeline": {
+    // To be determined
+  },
+  "authentication": {
+    "instances": {
+      // Key is instance domain
+      "chaos.social": {
+        "secure": true, // wether to use https or http
+        "clientId": 1234, // Retrieved after application introduced itself
+        "clientSecret": 1234,
+        "accounts": {
+          "maggo": {
+            "token": 1234
+          }
+        }
+      }
+    }
+  }
+}

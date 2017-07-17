@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Toot from '../components/Toot.js';
-import { fetchToots } from '../actions.js';
+import { fetchToots } from '../actions';
 import { connect } from 'react-redux';
 import './Timeline.css';
 
@@ -31,6 +31,11 @@ class Timeline extends Component {
   }
 }
 
+Timeline.propTypes = {
+  toots: PropTypes.array.isRequired,
+  onRefresh: PropTypes.func.isRequired,
+};
+
 const mapStateToProps = state => {
   const { isFetching, toots } = state.timeline;
 
@@ -43,10 +48,5 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   onRefresh: () => dispatch(fetchToots())
 });
-
-Timeline.propTypes = {
-  toots: PropTypes.array.isRequired,
-  onRefresh: PropTypes.func.isRequired,
-};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Timeline);

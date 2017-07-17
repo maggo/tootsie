@@ -15,17 +15,15 @@ function receiveToots(toots) {
   }
 }
 
-export function fetchToots () {
-  return dispatch => {
+export function fetchToots (domain) {
+  return (dispatch, getStore) => {
     dispatch(requestToots());
 
     let requestHeaders = new Headers({
       'Authorization': `Bearer ${localStorage.getItem('access_token')}`
     });
 
-    const instance = localStorage.getItem('instance');
-
-    return fetch(`https://${instance}/api/v1/timelines/home`, {
+    return fetch(`https://${domain}/api/v1/timelines/home`, {
       headers: requestHeaders
     })
       .then((res) => res.json())

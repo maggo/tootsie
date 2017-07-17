@@ -5,7 +5,6 @@ class Setup extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const [ user, instance ] = this.state.userHandle.split('@');
-    console.log('Submit!', user, instance);
 
     localStorage.setItem('user', user);
     localStorage.setItem('instance', instance);

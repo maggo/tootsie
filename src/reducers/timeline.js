@@ -1,6 +1,4 @@
-import { combineReducers } from 'redux';
-
-import { REQUEST_TOOTS, RECEIVE_TOOTS } from './actions.js';
+import { REQUEST_TOOTS, RECEIVE_TOOTS } from '../actions';
 
 function timeline(state = {
   isFetching: false,
@@ -24,6 +22,4 @@ function timeline(state = {
   }
 }
 
-export default combineReducers({
-  timeline,
-});
+export default timeline;
